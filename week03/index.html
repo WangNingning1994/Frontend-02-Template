@@ -1,0 +1,32 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Realm</title>
+</head>
+<body>
+  <div id="mountNode"></div>
+  <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.5.10/dist/g6.min.js"></script>
+  <script>
+    const globalObj = globalThis;
+    const data = {
+        nodes: [],
+        edges: []
+    };
+    for (const key in globalThis) {
+        data.nodes.push({
+            id: key,
+            label: key
+        });
+    }
+    const graph = new G6.Graph({
+        container: 'mountNode', // String | HTMLElement, required, the id of DOM element or an HTML node
+        width: 1000, // Number, required, the width of the graph
+        height: 800, // Number, required, the height of the graph
+        fitView: true
+    });
+    graph.data(data); // Load the data defined in Step 2
+    graph.render(); // Render the graph
+  </script>
+</body>
+</html>
